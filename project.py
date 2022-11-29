@@ -1,9 +1,10 @@
+#%%
 import json
 import pandas as pd
 
 #%%
 
-f = open(r'C:/Users/L S/Documents/Project/twit_data.json', 'rb')
+f = open(r'twit_data.json', 'rb')
 
 data = [json.loads(line) for line in f]
 
@@ -46,7 +47,7 @@ remainderdf.to_csv('remainder.csv',encoding='utf-8-sig', header=None)
 
 
 #%%
-# Tweet Scraping
+""" # Tweet Scraping
 import pandas as pd
 import nltk
 import requests
@@ -66,4 +67,4 @@ c.Search = 'Nuclear Power'
 c.Limit = 5000
 c.Store_json = True
 c.Output = 'twit_data.json'
-twint.run.Search(c)
+twint.run.Search(c) """
