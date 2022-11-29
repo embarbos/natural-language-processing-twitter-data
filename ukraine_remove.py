@@ -10,4 +10,4 @@ dataremoved = dataremoved[~data.iloc[:,1].str.contains('Ukrainian')]
 dataremoved = dataremoved[~data.iloc[:,1].str.contains('Ukrainians')]
 dataremoved = dataremoved[~data.iloc[:,1].str.contains('Zaporizhzhia')]
 
-dataremoved.to_csv('remainder.csv',encoding='utf-8-sig', header=None)
+dataremoved.to_csv('*.csv',encoding='utf-8-sig', header=None)
