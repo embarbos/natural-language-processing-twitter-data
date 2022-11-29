@@ -43,3 +43,27 @@ trainingset_4.to_csv('trainingset_4.csv',encoding='utf-8-sig', header=None)
 
 
 remainderdf.to_csv('remainder.csv',encoding='utf-8-sig', header=None)
+
+
+#%%
+# Tweet Scraping
+import pandas as pd
+import nltk
+import requests
+import twint
+import nest_asyncio
+nest_asyncio.apply()
+
+c = twint.Config()
+c.Search = 'Nuclear Energy'
+c.Limit = 5000
+c.Store_json = True
+c.Output = 'twit_data.json'
+twint.run.Search(c)
+
+c = twint.Config()
+c.Search = 'Nuclear Power'
+c.Limit = 5000
+c.Store_json = True
+c.Output = 'twit_data.json'
+twint.run.Search(c)
