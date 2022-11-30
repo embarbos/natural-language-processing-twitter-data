@@ -27,3 +27,9 @@ df.columns = ['tweet'] + ['topic ' + str(i) for i in range(0,ntopics)]
 # %%
 df
 # %%
+wordTopics = pd.DataFrame(lda.components_.T, index = vec.get_feature_names_out())
+wordTopics = wordTopics.apply(lambda x: x / sum(x), 1)
+wordTopics = wordTopics.reset_index()
+wordTopics.columns = ['word'] + ['topic ' + str(i) for i in range(0,ntopics)]
+wordTopics
+# %%
