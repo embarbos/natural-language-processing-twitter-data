@@ -3,6 +3,7 @@ import nltk
 import json
 import pandas as pd
 import re
+nltk.download('stopwords')
 
 #%%
 f = open(r'twit_data.json', 'rb')
@@ -19,8 +20,12 @@ for tweet in tweet_df['tweet']:
     clean = re.sub(r"\d", '', clean)
     clean = re.sub(r"'\S+", '', clean)
     clean = clean.replace('.', '').replace(';', '').lower()
-    words += re.findall(r"(?:\w+|'|’|!)+", clean)
+    words += re.findall(r"(?:\w+|'|’)+", clean)
     cleaned_tweets.append(clean)
     
 
 #%%
+stopwords = nltk.corpus.stopwords.words("english")
+# %%
+standardized = [w for w in words if w not in stopwords]
+# %%
