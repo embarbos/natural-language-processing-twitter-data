@@ -69,3 +69,10 @@ new_text = " ".join(x.lemmatize(t) for x, t in zip(blob.words, tags))
 # words after lemmatization
 standardized_words = TextBlob(new_text)
 #%%
+
+#%%
+# Plot the frequency distribution for tokens
+fq = nltk.FreqDist(w for w in standardized_words if w.isalnum())
+# plot
+fq.plot(50)
+#%%
