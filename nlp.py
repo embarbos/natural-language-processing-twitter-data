@@ -13,10 +13,14 @@ tweet_df = tweet_df.drop_duplicates()
 
 # %%
 cleaned_tweets = []
-for tweet in tweet_df['tweet'][:10]:
+words = []
+for tweet in tweet_df['tweet']:
     clean = re.sub(r"(http[s]?\://\S+)|([\[\(].*[\)\]])|([#@]\S+)|\n", "", tweet)
     clean = re.sub(r"\d", '', clean)
+    clean = re.sub(r"'\S+", '', clean)
+    clean = clean.replace('.', '').replace(';', '').lower()
+    words += re.findall(r"(?:\w+|'|’|!)+", clean)
     cleaned_tweets.append(clean)
-# %%
-tweet_df['tweet'][:10][0]
-# %%
+    
+
+#%%
