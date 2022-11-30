@@ -4,18 +4,12 @@ import json
 import pandas as pd
 import re
 nltk.download('stopwords')
-
-#%%
-f = open(r'twit_data.json', 'rb')
-data = [json.loads(line) for line in f]
-tweet_df = pd.DataFrame(data)
-tweet_df = tweet_df[['tweet','link']]
-tweet_df = tweet_df.drop_duplicates()
+from ukraine_remove import dataremoved
 
 # %%
 cleaned_tweets = []
 words = []
-for tweet in tweet_df['tweet']:
+for tweet in dataremoved['tweet']:
     clean = re.sub(r"(http[s]?\://\S+)|([\[\(].*[\)\]])|([#@]\S+)|\n", "", tweet)
     clean = re.sub(r"\d", '', clean)
     clean = re.sub(r"'\S+", '', clean)
@@ -32,6 +26,7 @@ standardized = [w for w in words if w not in stopwords]
 # Remove prefixes and suffixes from words through lemmatization
 nltk.download('wordnet')
 nltk.download('averaged_perceptron_tagger')
+nltk.download('omw-1.4')
 
 # all pos_tags for lower words
 twit_tags = nltk.pos_tag(standardized)
