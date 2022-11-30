@@ -26,9 +26,7 @@ for tweet in tweet_df['tweet']:
 
 #%%
 stopwords = nltk.corpus.stopwords.words("english")
-# %%
 standardized = [w for w in words if w not in stopwords]
-# %%
 
 #%%
 # Remove prefixes and suffixes from words through lemmatization
@@ -68,7 +66,6 @@ tags = [wordnet_pos(x[1]) for x in blob.pos_tags]
 new_text = " ".join(x.lemmatize(t) for x, t in zip(blob.words, tags))
 # words after lemmatization
 standardized_words = TextBlob(new_text)
-#%%
 
 #%%
 # Plot the frequency distribution for tokens
