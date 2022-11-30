@@ -11,3 +11,5 @@ tokenized_words = word_tokenize(new_text, "english")
 # %%
 score = SentimentIntensityAnalyzer().polarity_scores(new_text)
 # %%
+score
+# %%
