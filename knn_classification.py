@@ -7,7 +7,7 @@ from sklearn.neighbors import KNeighborsClassifier
 #%%
 # read the file
 colnames=['tweets', 'label']
-data = pd.read_csv("/Users/luluxue/PycharmProjects/Course_208/final_141B/trainingset_1_lemmatized.csv", names=colnames, header=None)
+data = pd.read_csv("final_141B/trainingset_1_lemmatized.csv", names=colnames, header=None)
 
 #%%
 # one-hot encoding
