@@ -74,13 +74,13 @@ from sklearn.model_selection import train_test_split
 # Import scikit-learn metrics module for accuracy calculation
 from sklearn import metrics
 # Split dataset into training set and test set
-# test which state produce the largest acc
-state_range = range(1, 31)
+# test which test_size produces the largest acc
+test_size_range = range(0.1,0.4,0.1)
 acc = 0
-state_acc = []
-state_random = []
-for state in state_range:
-    X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=state) # 80% training and 20% test
+test_size_acc = []
+test_size = []
+for size in test_size_range:
+    X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=size, random_state=0) # 80% training and 20% test
     # Create KNN Classifier
     knn = KNeighborsClassifier(n_neighbors=25)
 
@@ -94,12 +94,12 @@ for state in state_range:
     acc_s = metrics.accuracy_score(y_test, y_pred)
     if acc <= acc_s:
         acc = acc_s
-        print("state: ", state)
+        print("test_size: ", size)
         print("Accuracy:", acc)
-        state_acc.append(acc)
-        state_random.append(state)
+        test_size_acc.append(acc)
+        test_size.append(size)
 
-plt.plot(state_random, state_acc)
-plt.xlabel('Random State')
+plt.plot(test_size, test_size_acc)
+plt.xlabel('Test Size')
 plt.ylabel('acc for KNN')
 plt.show()
