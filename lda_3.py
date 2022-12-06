@@ -117,6 +117,11 @@ for m, cv in zip(x, coherence_values):
 
 
 
+#%% the interaction visualization
+import pyLDAvis
+import pyLDAvis.gensim_models
+vis_data = pyLDAvis.gensim_models.prepare(lda_model, doc_term_matrix, dictionary)
+pyLDAvis.show(vis_data, open_browser=False, local=False)
 
 
 
